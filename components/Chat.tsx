@@ -46,15 +46,15 @@ export default function Chat() {
   };
 
   return (
-    <div className="w-full max-w-[800px] h-[85vh] flex flex-col overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800">
+    <div className="w-full max-w-[800px] h-[85vh] flex flex-col overflow-hidden rounded-xl bg-background border border-default-200">
       <div className="flex-1 p-6 overflow-y-auto space-y-4">
         {messages.map((message) => (
           <div
             key={message.id}
             className={`max-w-[70%] p-4 ${
               message.sent
-                ? "ml-auto bg-blue-600 text-white rounded-2xl rounded-br-sm"
-                : "bg-zinc-800 text-zinc-100 rounded-2xl rounded-bl-sm"
+                ? "ml-auto bg-[#0066FF] text-white rounded-2xl rounded-br-sm"
+                : "bg-default-100 text-foreground rounded-2xl rounded-bl-sm"
             }`}
           >
             {message.text}
@@ -63,22 +63,24 @@ export default function Chat() {
       </div>
 
       <form
-        className="p-4 border-t border-zinc-800 bg-zinc-900/50 backdrop-blur flex gap-3"
+        className="px-6 py-4 border-t border-default-200 bg-background/90 backdrop-blur"
         onSubmit={handleSendMessage}
       >
-        <Input
-          className="flex-1 bg-zinc-800 border-zinc-700 text-zinc-100 placeholder:text-zinc-400"
-          placeholder="Type your message..."
-          type="text"
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-        />
-        <Button
-          className="bg-blue-600 hover:bg-blue-500 text-white px-6"
-          type="submit"
-        >
-          Send
-        </Button>
+        <div className="flex gap-3">
+          <Input
+            className="flex-1 bg-default-100 border-default-200 text-foreground placeholder:text-default-400 rounded-none focus:ring-primary"
+            placeholder="Type your message..."
+            type="text"
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+          />
+          <Button
+            className="bg-[#0066FF] hover:bg-[#0052CC] text-white px-6 rounded-lg"
+            type="submit"
+          >
+            Send
+          </Button>
+        </div>
       </form>
     </div>
   );
