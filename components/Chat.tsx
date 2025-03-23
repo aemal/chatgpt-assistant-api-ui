@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
+import { SendHorizontal } from "lucide-react";
 
 interface Message {
   id: number;
@@ -66,19 +67,21 @@ export default function Chat() {
         className="px-6 py-4 border-t border-default-200 bg-background/90 backdrop-blur rounded-b-[20px] overflow-hidden"
         onSubmit={handleSendMessage}
       >
-        <div className="flex gap-3">
-          <Input
-            placeholder="Type your message..."
-            size="md"
-            type="text"
-            onChange={(e) => setNewMessage(e.target.value)}
-          />
-
+        <div className="flex items-center gap-3">
+          <div className="flex-1">
+            <Input
+              className="bg-default-100 border-default-200 text-foreground placeholder:text-default-400 rounded-[12px]"
+              placeholder="Type your message..."
+              type="text"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+            />
+          </div>
           <Button
-            className="bg-[#0066FF] hover:bg-[#0052CC] text-white px-6 rounded-[12px]"
+            className="bg-[#0066FF] hover:bg-[#0052CC] text-white w-10 h-10 p-0 flex items-center justify-center rounded-full shrink-0"
             type="submit"
           >
-            Send
+            <SendHorizontal className="w-4 h-4" />
           </Button>
         </div>
       </form>
