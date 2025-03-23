@@ -15,36 +15,58 @@ export default function Chat() {
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Message[]>([
     { id: 1, text: "Hello! How can I help you today?", sent: false },
-    {
-      id: 2,
-      text: "Hi! I'm interested in learning more about your services.",
-      sent: true,
-    },
-    {
-      id: 3,
-      text: "Of course! We offer a wide range of solutions. What specific area are you interested in?",
-      sent: false,
-    },
-    {
-      id: 4,
-      text: "I'd like to know more about your pricing plans.",
-      sent: true,
-    },
   ]);
   const [newMessage, setNewMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newMessage.trim()) return;
+    if (!newMessage.trim() || isLoading) return;
 
-    const message: Message = {
+    const userMessage: Message = {
       id: messages.length + 1,
       text: newMessage,
       sent: true,
     };
 
-    setMessages([...messages, message]);
+    setMessages((prev) => [...prev, userMessage]);
     setNewMessage("");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: newMessage }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      const data = await response.json();
+
+      const assistantMessage: Message = {
+        id: messages.length + 2,
+        text: data.response,
+        sent: false,
+      };
+
+      setMessages((prev) => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error("Error:", error);
+      const errorMessage: Message = {
+        id: messages.length + 2,
+        text: "Sorry, I encountered an error. Please try again.",
+        sent: false,
+      };
+
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Scroll to bottom whenever messages change
@@ -84,6 +106,7 @@ export default function Chat() {
           <div className="flex-1">
             <Input
               className="bg-default-100 border-default-200 text-foreground placeholder:text-default-400 rounded-[12px]"
+              disabled={isLoading}
               placeholder="Type your message..."
               type="text"
               value={newMessage}
@@ -92,6 +115,7 @@ export default function Chat() {
           </div>
           <Button
             className="bg-[#0066FF] hover:bg-[#0052CC] text-white w-10 h-10 p-0 flex items-center justify-center rounded-full shrink-0"
+            disabled={isLoading}
             type="submit"
           >
             <SendHorizontal className="w-4 h-4" />
