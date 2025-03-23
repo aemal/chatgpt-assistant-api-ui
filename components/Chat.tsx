@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
-import { SendHorizontal } from "lucide-react";
+import { SendHorizontal, Loader2 } from "lucide-react";
 
 interface Message {
   id: number;
@@ -96,6 +96,12 @@ export default function Chat() {
             {message.text}
           </div>
         ))}
+        {isLoading && (
+          <div className="flex items-center gap-2 text-default-500">
+            <Loader2 className="w-4 h-4 animate-spin" />
+            <span>Thinking...</span>
+          </div>
+        )}
       </div>
 
       <form
@@ -118,7 +124,11 @@ export default function Chat() {
             disabled={isLoading}
             type="submit"
           >
-            <SendHorizontal className="w-4 h-4" />
+            {isLoading ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <SendHorizontal className="w-4 h-4" />
+            )}
           </Button>
         </div>
       </form>
