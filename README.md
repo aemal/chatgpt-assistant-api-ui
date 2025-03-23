@@ -1,53 +1,88 @@
-# Next.js & HeroUI Template
+# ChatGPT Assistant API UI
 
-This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
+A simple, elegant UI for interacting with ChatGPT Assistant API. Built with Next.js and TypeScript, this project provides a clean interface for chatting with your custom ChatGPT Assistant.
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/heroui/next-app-template)
+## 🚀 Features
 
-## Technologies Used
+- Clean and modern UI design
+- Real-time chat interface
+- Loading states and animations
+- Error handling
+- Responsive design
+- Easy setup with environment variables
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI v2](https://heroui.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+## 🛠️ Tech Stack
 
-## How to Use
+- Next.js 15
+- TypeScript
+- Tailwind CSS
+- OpenAI API
+- HeroUI Components
+- Lucide Icons
 
-### Use the template with create-next-app
+## 📋 Prerequisites
 
-To create a new project based on this template using `create-next-app`, run the following command:
+- Node.js 18+ or Bun
+- OpenAI API Key
+- ChatGPT Assistant ID
 
+## 🔧 Installation
+
+1. Clone the repository:
 ```bash
-npx create-next-app -e https://github.com/heroui-inc/next-app-template
+git clone https://github.com/yourusername/chatgpt-assistant-api-ui.git
+cd chatgpt-assistant-api-ui
 ```
 
-### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
+2. Install dependencies:
 ```bash
+bun install
+# or
 npm install
 ```
 
-### Run the development server
-
+3. Create a `.env` file in the root directory:
 ```bash
+cp .env.example .env
+```
+
+4. Add your OpenAI API key and Assistant ID to the `.env` file:
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_ASSISTANT_ID=your_assistant_id_here
+```
+
+5. Start the development server:
+```bash
+bun dev
+# or
 npm run dev
 ```
 
-### Setup pnpm (optional)
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+## 🎥 Demo
 
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
+Watch the live coding session where this project was built:
+[Watch on YouTube](https://youtu.be/g-tf0qcQeho?list=PLWYu7XaUG3XNQIBBM8Mfzx97jYtwK-O1R)
 
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+## 🤝 Contributing
 
-## License
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👤 Author
+
+**Aemal Sayer**
+- Website: [AemalSayer.com](https://AemalSayer.com)
+- GitHub: [@aemal](https://github.com/aemal)
+- LinkedIn: [Connect Now](https://linkedin.com/in/aemal)
+
+## 🙏 Acknowledgments
+
+- OpenAI for the ChatGPT Assistant API
+- The Next.js team for the amazing framework
+- All contributors and supporters
