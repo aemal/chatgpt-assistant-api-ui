@@ -46,7 +46,7 @@ export default function Chat() {
   };
 
   return (
-    <div className="w-full max-w-[800px] h-[85vh] flex flex-col overflow-hidden rounded-xl bg-background border border-default-200">
+    <div className="w-full max-w-[800px] h-[85vh] flex flex-col overflow-hidden rounded-[20px] bg-background border border-default-200">
       <div className="flex-1 p-6 overflow-y-auto space-y-4">
         {messages.map((message) => (
           <div
@@ -63,19 +63,19 @@ export default function Chat() {
       </div>
 
       <form
-        className="px-6 py-4 border-t border-default-200 bg-background/90 backdrop-blur"
+        className="px-6 py-4 border-t border-default-200 bg-background/90 backdrop-blur rounded-b-[20px] overflow-hidden"
         onSubmit={handleSendMessage}
       >
         <div className="flex gap-3">
           <Input
-            className="flex-1 bg-default-100 border-default-200 text-foreground placeholder:text-default-400 rounded-none focus:ring-primary"
             placeholder="Type your message..."
+            size="md"
             type="text"
-            value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
           />
+
           <Button
-            className="bg-[#0066FF] hover:bg-[#0052CC] text-white px-6 rounded-lg"
+            className="bg-[#0066FF] hover:bg-[#0052CC] text-white px-6 rounded-[12px]"
             type="submit"
           >
             Send
