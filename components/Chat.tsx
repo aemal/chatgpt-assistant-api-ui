@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { SendHorizontal } from "lucide-react";
@@ -12,6 +12,7 @@ interface Message {
 }
 
 export default function Chat() {
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Message[]>([
     { id: 1, text: "Hello! How can I help you today?", sent: false },
     {
@@ -46,9 +47,21 @@ export default function Chat() {
     setNewMessage("");
   };
 
+  // Scroll to bottom whenever messages change
+  useEffect(() => {
+    const container = messagesContainerRef.current;
+
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
+  }, [messages]);
+
   return (
     <div className="w-full max-w-[800px] h-[85vh] flex flex-col overflow-hidden rounded-[20px] bg-background border border-default-200">
-      <div className="flex-1 p-6 overflow-y-auto space-y-4">
+      <div
+        ref={messagesContainerRef}
+        className="flex-1 p-6 overflow-y-auto space-y-4 scroll-smooth"
+      >
         {messages.map((message) => (
           <div
             key={message.id}
