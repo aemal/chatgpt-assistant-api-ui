@@ -63,8 +63,8 @@ npm run dev
 
 ## 🎥 Demo
 
-Watch the live coding session where this project was built:
-[Watch on YouTube](https://youtu.be/U7K1F55bbs0)
+Watch the demo at the 1:54:04 / 2:08:57 of this live vibe coding session where this project was built:
+[Watch on YouTube](https://youtu.be/U7K1F55bbs0?t=6844)
 
 ## 🤝 Contributing
 
