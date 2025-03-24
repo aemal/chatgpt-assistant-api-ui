@@ -64,7 +64,7 @@ npm run dev
 ## 🎥 Demo
 
 Watch the live coding session where this project was built:
-[Watch on YouTube](https://youtu.be/g-tf0qcQeho?list=PLWYu7XaUG3XNQIBBM8Mfzx97jYtwK-O1R)
+[Watch on YouTube](https://youtu.be/U7K1F55bbs0)
 
 ## 🤝 Contributing
 
